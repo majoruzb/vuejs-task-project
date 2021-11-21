@@ -1,17 +1,58 @@
 <template>
 <div class="container">
   <Header title="Assalomu alaykum MAJOR GAMER"/>
+  <Tasks @delete-task="deleteTask" :tasks="tasks"/>
 </div>
     
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Tasks from './components/Tasks.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Tasks
+  },
+  data() {
+    return {
+      tasks: []
+    }
+  },
+  methods: {
+    deleteTask(id){
+      this.tasks = this.tasks.filter((task) => task.id !== id)
+    }
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: "Test was created",
+        day: "november 21 march 1989 at 2:30pm",
+        reminder: true
+      },
+      {
+        id: 2,
+        text: "Test2 was created",
+        day: "november 21 march 1989 at 2:30pm",
+        reminder: false
+      },
+      {
+        id: 3,
+        text: "Test3 was created",
+        day: "november 21 march 1989 at 2:30pm",
+        reminder: true
+      },
+      {
+        id: 4,
+        text: "Test4 was created",
+        day: "november 21 march 1989 at 2:30pm",
+        reminder: true
+      }
+    ]
   }
 };
 </script>
