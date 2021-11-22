@@ -1,7 +1,9 @@
 <template>
 <div class="container">
-  <Header title="Assalomu alaykum MAJOR GAMER"/>
-  <AddTask  @add-task="addTask"/>
+  <Header @toggle-add-task="toggleAddTask" :showAddTask="showAddTask" title="Assalomu alaykum MAJOR GAMER"/>
+  <div v-if="showAddTask">
+    <AddTask  @add-task="addTask"/>
+  </div>
   <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
 </div>
     
@@ -21,10 +23,14 @@ export default {
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask: false
     }
   },
   methods: {
+    toggleAddTask(){
+      this.showAddTask = !this.showAddTask
+    },
     addTask(task){
       this.tasks = [...this.tasks, task]
     },
