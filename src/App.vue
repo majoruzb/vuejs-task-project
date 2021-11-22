@@ -25,8 +25,8 @@ export default {
     }
   },
   methods: {
-    AddTask(task){
-      this.tasks = [...tasks, task]
+    addTask(task){
+      this.tasks = [...this.tasks, task]
     },
     deleteTask(id){
       if (confirm('Do you want to delete?')) {
